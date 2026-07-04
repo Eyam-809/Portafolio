@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+
+:root{
+  --bg: #f5f2ee; /* warm beige */
+  --fg: #0b0b0b;
+}
+
+.bookcover-root{
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+}
+
+/* subtle canvas texture using SVG pattern (flat, no gradients) */
+.bookcover-canvas{
+  width: min(720px, 92vw);
+  aspect-ratio: 2 / 3;
+  background-color: var(--bg);
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,0.04);
+  transition: transform 180ms ease;
+  will-change: transform;
+}
+
+.bookcover-canvas::before{
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"><rect width="40" height="40" fill="%23f5f2ee"/><g stroke="%23e8e3dc" stroke-width="0.6"><path d="M0 0 L40 0" opacity="0.08"/><path d="M0 20 L40 20" opacity="0.04"/></g></svg>');
+  background-repeat: repeat;
+  pointer-events: none;
+}
+
+.circle{
+  width: 58%;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  border: 6px solid var(--fg); /* thin black circle */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.dot{
+  width: 6%;
+  aspect-ratio: 1 / 1;
+  background: var(--fg);
+  border-radius: 50%;
+}
+
+.title-vertical{
+  position: absolute;
+  right: 14px;
+  top: 8%;
+  transform: rotate(-90deg);
+  transform-origin: right top;
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  letter-spacing: 0.6px;
+  color: var(--fg);
+  z-index: 3;
+  white-space: nowrap;
+}
+
+.author-vertical{
+  position: absolute;
+  right: 12px;
+  bottom: 6%;
+  transform: rotate(-90deg);
+  transform-origin: right bottom;
+  font-family: 'Playfair Display', serif;
+  font-size: 14px;
+  color: var(--fg);
+  opacity: 0.9;
+  z-index: 3;
+}
+
+/* Responsive tweaks */
+@media (max-width: 420px){
+  .bookcover-canvas{ width: min(360px, 94vw); }
+  .title-vertical{ font-size: 16px; right: 10px; }
+  .author-vertical{ font-size: 12px; bottom: 5%; right: 8px; }
+  .circle{ width: 70%; border-width: 5px; }
+}
+
+/* Hover / focus lift (no shadow) */
+.bookcover-canvas:hover,
+.bookcover-canvas:focus-within {
+  transform: translateY(-8px);
+}
