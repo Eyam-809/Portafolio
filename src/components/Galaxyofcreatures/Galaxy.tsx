@@ -18,9 +18,9 @@ const backgroundArt = [
 ]
 
 function Galaxy() {
-  const [imagenAbierta, setImagenAbierta] = useState(null)
+  const [imagenAbierta, setImagenAbierta] = useState<string | null>(null)
 
-  const renderGaleria = (items, titulo) => (
+  const renderGaleria = (items: string[], titulo: string) => (
     <section className="vida-secreta-section">
       <h2 className="vida-secreta-title">{titulo}</h2>
 

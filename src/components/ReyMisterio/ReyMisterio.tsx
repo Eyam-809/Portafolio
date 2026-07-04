@@ -20,7 +20,7 @@ const items = [
 ]
 
 function ReyMisterio() {
-  const [imagenAbierta, setImagenAbierta] = useState(null)
+  const [imagenAbierta, setImagenAbierta] = useState<string | null>(null)
 
   return (
     <main className="container home-page rey-misterio-page">

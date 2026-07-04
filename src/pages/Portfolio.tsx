@@ -1,4 +1,4 @@
-import React from 'react'
+
 
 import imgPro1 from '../assets/img/Portafolio_img_2021.png'
 import imgPro2 from '../assets/img/Portafolio_img_2022.png'
